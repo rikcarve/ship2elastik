@@ -1,0 +1,10 @@
+13:01:29.355  [main] DEBUG o.j.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider
+13:01:29.408  [main] DEBUG i.undertow - starting undertow server io.undertow.Undertow@77e4c80f
+13:01:29.415  [main] INFO  o.xnio - XNIO version 3.3.6.Final
+13:01:29.428  [main] INFO  o.x.nio - XNIO NIO Implementation Version 3.3.6.Final
+13:01:29.621  [XNIO-1 I/O-1] DEBUG o.x.nio - Started channel thread 'XNIO-1 I/O-1', selector sun.nio.ch.WindowsSelectorImpl@44eddfd6
+13:01:29.621  [XNIO-1 I/O-2] DEBUG o.x.nio - Started channel thread 'XNIO-1 I/O-2', selector sun.nio.ch.WindowsSelectorImpl@253d066a
+13:01:29.622  [XNIO-1 I/O-4] DEBUG o.x.nio - Started channel thread 'XNIO-1 I/O-4', selector sun.nio.ch.WindowsSelectorImpl@26524464
+13:01:29.622  [XNIO-1 I/O-3] DEBUG o.x.nio - Started channel thread 'XNIO-1 I/O-3', selector sun.nio.ch.WindowsSelectorImpl@1a2e8aff
+13:01:29.623  [XNIO-1 Accept] DEBUG o.x.nio - Started channel thread 'XNIO-1 Accept', selector sun.nio.ch.WindowsSelectorImpl@363a4be3
+13:01:29.623  [main] DEBUG i.undertow - Configuring listener with protocol HTTP for interface 0.0.0.0 and port 8080

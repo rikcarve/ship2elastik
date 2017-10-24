@@ -1,0 +1,11 @@
+url: http://localhost:9200
+username: user
+password: password
+bulkSize: 100
+interval: 1000
+index: log
+
+logfiles:
+  - application: undertow
+    path: src/test/resources/test.log
+    timeFormat: HH:mm:ss.SSS
