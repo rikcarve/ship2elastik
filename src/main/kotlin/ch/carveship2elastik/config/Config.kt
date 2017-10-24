@@ -1,11 +1,11 @@
 package ch.carveship2elastik.config
 
 data class Config (
-    val url: String? = null,
-    val username: String? = null,
-    val password: String? = null,
+    val url: String,
+    val username: String,
+    val password: String,
     val bulkSize: Int = 0,
-    val interval: Int = 0,
-    val index: String? = null,
-    val logfiles: List<Logfile>? = null
+    val interval: Long = 0,
+    val index: String,
+    val logfiles: List<Logfile>
 )
