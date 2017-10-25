@@ -51,7 +51,7 @@ class SmartFileReader(filePath: String, private var position: Long, private val 
 
     @Throws(IOException::class)
     private fun notify(raf: RandomAccessFile, lines: List<String>) {
-        val newPosition = raf.getFilePointer()
+        val newPosition = raf.filePointer
         if (listener(lines, newPosition)) {
             position = newPosition
         } else {
