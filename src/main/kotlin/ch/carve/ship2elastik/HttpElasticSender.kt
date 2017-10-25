@@ -38,7 +38,7 @@ class HttpElasticSender(private val url: String, username: String, password: Str
 
     private fun sendHttpRequest(request: Request): Boolean {
         try {
-            return client.newCall(request).execute().isSuccessful()
+            return client.newCall(request).execute().isSuccessful
         } catch (e: IOException) {
             logger.error("Bulk request exception", e)
         }
