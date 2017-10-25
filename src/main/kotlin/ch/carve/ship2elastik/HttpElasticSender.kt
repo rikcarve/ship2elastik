@@ -1,18 +1,15 @@
-package ch.carveship2elastik
+package ch.carve.ship2elastik
 
 import java.io.IOException
 import java.util.Base64
 import javax.json.Json
-import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 
-class HttpElasticSender(url: String, username: String, password: String, index: String) {
-    private val index = index
-    private val url = url
+class HttpElasticSender(private val url: String, username: String, password: String, private val index: String) {
     private val client: OkHttpClient = OkHttpClient()
     private val authToken: String = Base64.getEncoder().encodeToString((username + ":" + password).toByteArray())
 

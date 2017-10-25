@@ -1,7 +1,6 @@
-package ch.carveship2elastik
+package ch.carve.ship2elastik
 
-import ch.carveship2elastik.config.Config
-import ch.carveship2elastik.ship2elastik.SmartFileReader
+import ch.carve.ship2elastik.config.Config
 import com.esotericsoftware.yamlbeans.YamlReader
 import java.io.FileReader
 

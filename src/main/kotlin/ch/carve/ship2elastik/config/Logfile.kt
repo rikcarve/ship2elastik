@@ -1,4 +1,4 @@
-package ch.carveship2elastik.config
+package ch.carve.ship2elastik.config
 
 data class Logfile(
     var application: String = "",

@@ -1,4 +1,4 @@
-package ch.carveship2elastik.config
+package ch.carve.ship2elastik.config
 
 import org.junit.Assert.*
 import org.junit.Test

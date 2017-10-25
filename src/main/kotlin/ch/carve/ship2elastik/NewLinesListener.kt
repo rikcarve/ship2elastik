@@ -1,3 +1,3 @@
-package ch.carveship2elastik.ship2elastik
+package ch.carve.ship2elastik
 
 typealias NewLinesListener = (List<String>, Long) -> Boolean

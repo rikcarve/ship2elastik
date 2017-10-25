@@ -1,4 +1,4 @@
-package ch.carveship2elastik.ship2elastik
+package ch.carve.ship2elastik
 
 import java.io.File
 import java.io.IOException
@@ -6,13 +6,9 @@ import java.io.RandomAccessFile
 import java.util.ArrayList
 import org.slf4j.LoggerFactory
 
-class SmartFileReader(filePath: String, position: Long, interval: Long, bulkSize: Int, listener: NewLinesListener) {
-    private var position = position
+class SmartFileReader(filePath: String, private var position: Long, private val interval: Long, private val bulkSize: Int, private val listener: NewLinesListener) {
     private val file: File = File(filePath)
     private var stop = false
-    private val interval = interval
-    private val listener = listener
-    private val bulkSize = bulkSize
 
     fun stop() {
         stop = true

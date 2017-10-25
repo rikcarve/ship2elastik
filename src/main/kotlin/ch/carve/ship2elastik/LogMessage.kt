@@ -1,4 +1,4 @@
-package ch.carveship2elastik
+package ch.carve.ship2elastik
 
 import java.time.OffsetDateTime
 
