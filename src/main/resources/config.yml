@@ -1,0 +1,11 @@
+url: http://localhost:9200
+username: user
+password: password
+bulkSize: 100
+interval: 1000
+index: log
+
+logfiles:
+  - application: undertow
+    path: c:/Users/rik/dev/github/rikcarve/undertow/undertow.log
+    timeFormat: HH:mm:ss.SSS

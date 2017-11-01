@@ -20,6 +20,10 @@ class SmartFileReader(filePath: String, private var position: Long, private val 
                 val newLength = file.length()
                 if (newLength > position) {
                     readFile()
+                } else if (newLength < position) {
+                    // e.g. after rollover -> restart at 0
+                    position = 0
+                    readFile()
                 }
                 sleep()
             } catch (e: IOException) {
