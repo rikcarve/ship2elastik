@@ -5,7 +5,11 @@ import com.esotericsoftware.yamlbeans.YamlReader
 import java.io.FileReader
 
 fun main(args: Array<String>) {
-    val yaml = YamlReader(FileReader("src/main/resources/config.yml"))
+    var filename = "src/main/resources/config.yml"
+    if (args.isNotEmpty()) {
+        filename = args[0]
+    }
+    val yaml = YamlReader(FileReader(filename))
     val config = yaml.read(Config::class.java)
     val sender = HttpElasticSender(config.url, config.username, config.password, config.index)
     val parser = LineParser(config.logfiles[0].application, config.logfiles[0].timeFormat)
