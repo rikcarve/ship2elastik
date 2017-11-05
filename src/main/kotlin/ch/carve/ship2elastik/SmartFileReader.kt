@@ -43,7 +43,7 @@ class SmartFileReader(filePath: String, private var position: Long, private val 
             while (line != null) {
                 lines.add(line)
                 if (++count >= bulkSize) {
-                    notify(raf, lines)
+                    if (!notify(raf, lines)) break
                     lines.clear()
                     count = 0
                 }
@@ -54,13 +54,13 @@ class SmartFileReader(filePath: String, private var position: Long, private val 
     }
 
     @Throws(IOException::class)
-    private fun notify(raf: RandomAccessFile, lines: List<String>) {
+    private fun notify(raf: RandomAccessFile, lines: List<String>) : Boolean {
         val newPosition = raf.filePointer
         if (listener(lines, newPosition)) {
             position = newPosition
-        } else {
-            throw IOException("Notification failed")
+            return true
         }
+        return false
     }
 
     private fun sleep() {
