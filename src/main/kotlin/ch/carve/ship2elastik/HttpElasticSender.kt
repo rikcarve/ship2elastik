@@ -39,7 +39,6 @@ class HttpElasticSender(private val url: String, username: String, password: Str
                 .header("Content-Type", "application/json")
                 .post(RequestBody.create(JSON, builder.toString()))
                 .build()
-        logger.debug(builder.toString())
         return sendHttpRequest(request)
     }
 
