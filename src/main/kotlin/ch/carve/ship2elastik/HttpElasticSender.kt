@@ -1,7 +1,6 @@
 package ch.carve.ship2elastik
 
 import java.io.IOException
-import java.util.Base64
 import javax.json.Json
 import org.slf4j.LoggerFactory
 import okhttp3.MediaType
@@ -10,11 +9,14 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
+import java.util.Optional
 
 class HttpElasticSender(private val url: String, username: String, password: String, private val index: String) {
     private val client: OkHttpClient = OkHttpClient()
     private val authToken: String = Base64.getEncoder().encodeToString((username + ":" + password).toByteArray())
     private val indexDateFormat = DateTimeFormatter.ofPattern("YYYY.MM.dd")
+    private val environment = Optional.ofNullable(System.getenv("FO_ENV")).orElse(System.getProperty("FO_ENV", "dev"))
 
     fun send(messages: List<LogMessage>): Boolean {
         val builder = StringBuilder()
@@ -34,6 +36,7 @@ class HttpElasticSender(private val url: String, username: String, password: Str
         val request = Request.Builder()
                 .url(url + "/_bulk")
                 .header("Authorization", "Basic " + authToken)
+                .header("Content-Type", "application/json")
                 .post(RequestBody.create(JSON, builder.toString()))
                 .build()
         logger.debug(builder.toString())
@@ -47,6 +50,7 @@ class HttpElasticSender(private val url: String, username: String, password: Str
     private fun sendHttpRequest(request: Request): Boolean {
         try {
             client.newCall(request).execute().use {
+                logger.info("Response status code: {}", it.code())
                 return it.isSuccessful
             }
         } catch (e : IOException) {
@@ -57,9 +61,10 @@ class HttpElasticSender(private val url: String, username: String, password: Str
 
     private fun createJsonFromMessage(message: LogMessage): String {
         return Json.createObjectBuilder()
-//                .add("@datetime", message.datetime.toString())
-                .add("@timestamp", message.datetime.toString())
+                .add("datetime", message.datetime.toString())
+//                .add("@timestamp", message.datetime.toString())
                 .add("type", "logs")
+                .add("environment", environment)
                 .add("application", message.application)
                 .add("logmessage", message.logMessage)
                 .build().toString()
